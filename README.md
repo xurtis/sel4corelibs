@@ -21,7 +21,6 @@ platform independent interface.
 Specifically, `libcore` provides the following subset of the C standard
 library.
 
- - `<assert.h>`
  - `<float.h>`
  - `<iso646.h>`
  - `<limits.h>`
@@ -45,6 +44,7 @@ Notably, `libcore` does not provide any of the following:
  - interaction with the multithreading or multiprocessing environment
    beyond `exit`, `abort`, and friends,
  - `errno`,
+ - `assert`,
  - support for C-style strings and characters outside of what is
    required in `<string.h>` and `<stdlib.h>`,
  - pseudo-random number generation,
@@ -109,3 +109,8 @@ This provides atomic and synchronisation primitives as well as a simple
 user-level co-operative threading implementation. It also has a
 pluggable backend for spreading threads over multiple OS-level threads
 in a m:n fashion.
+
+`libassert`
+-----------
+
+Static and run-time assertions.
