@@ -35,7 +35,6 @@ library.
    - `div_t`, `ldiv_t`, `lldiv_t`
    - `EXIT_SUCCESS`, `EXIT_FAILURE`
    - numeric conversion (7.22.1)
-   - allocation with pluggable heap (7.22.3)
    - searching and sorting (7.22.5)
    - integer arithmetic (7.22.6)
  - `<stdnoreturn.h>`
@@ -53,6 +52,7 @@ Notably, `libcore` does not provide any of the following:
  - floating point exception environment,
  - text formatting,
  - text locales,
+ - memory allocation,
  - I/O operations,
  - type-generic math,
  - signals,
@@ -66,8 +66,16 @@ Notably, `libcore` does not provide any of the following:
 The subset has been chosen to select the most commonly used utilities
 from the standard library but to avoid interfaces that do not lend
 themselves to the development of optimal systems, that are unsafe or
-non-reentrant, and that would require more work to maintain than more
-composable and ergonomic alternatives.
+non-reentrant, that require global state, and that would require more
+work to maintain than more composable and ergonomic alternatives.
+
+`liballoc`
+---------
+
+This library provides a malloc-like allocator interface that depends on
+a pluggable dynamic heap that simply implements a brk-like interfce. The
+allocator uses the heap in a way that ensures that all allocations are
+aligned to a power of two greater than the requested allocation.
 
 `libutils`
 ----------
