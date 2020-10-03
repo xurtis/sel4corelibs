@@ -21,7 +21,6 @@ platform independent interface.
 Specifically, `libcore` provides the following subset of the C standard
 library.
 
- - `<float.h>`
  - `<iso646.h>`
  - `<limits.h>`
  - `<setjmp.h>`
